@@ -27,8 +27,18 @@
         
         #scare-text { color: yellow; font-size: 4rem; text-transform: uppercase; font-weight: bold; margin-top: 20px; text-shadow: 2px 2px 4px red; }
         body.angry h1, body.angry #food-display, body.angry button { display: none !important; }
-        body.angry #scare-container { display: flex; animation: zoomIn 0.1s ease-in; }
-        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        body.angry #scare-container { display: flex; animation: zoomIn 0.3s ease-in; }
+        /* Hiệu ứng nhấp nháy nền 7 màu hệ "bay lắc" */
+        @keyframes flashBg {
+            0% { background-color: red; }
+            14% { background-color: orange; }
+            28% { background-color: yellow; }
+            42% { background-color: green; }
+            57% { background-color: blue; }
+            71% { background-color: indigo; }
+            85% { background-color: violet; }
+            100% { background-color: red; }
+        }
     </style>
 </head>
 <body>
