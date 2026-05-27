@@ -16,7 +16,7 @@
         button:hover { background-color: #45a049; }
         
         /* Đã BẬT công tắc nhấp nháy 7 màu (flashBg) cho container */
-        #scare-container { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999; justify-content: center; align-items: center; flex-direction: column; animation: flashBg 0.5s infinite; }
+        #scare-container { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999; justify-content: center; align-items: center; flex-direction: column; animation: flashBg 1s infinite; }
         
         /* Đã XÓA lệnh cắt ảnh, ảnh sẽ tự động co giãn ôm khít viền và RUNG LẮC */
         #scare-image { 
