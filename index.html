@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiên Tri Đồ Ăn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        #food-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px;
+            color: #333;
+            min-height: 50px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: 0.2s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        body.angry {
+            background-color: #ff0000;
+            color: white;
+            animation: shake 0.2s;
+            animation-iteration-count: infinite;
+        }
+        body.angry #food-display {
+            color: yellow;
+            font-size: 4rem;
+            text-transform: uppercase;
+        }
+        body.angry button {
+            display: none;
+        }
+        @keyframes shake {
+            0% { transform: translate(2px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(0px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(2px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(2px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chuyên Gia Dinh Dưỡng Giải Quyết Khâu Oai</h1>
+    <div id="food-display">Nhấn nút bên dưới để nhận thông điệp vũ trụ!</div>
+    <button id="random-btn">Hôm nay ăn gì?</button>
+
+    <script>
+        const menu = [
+            "Cơm rang dưa bò",
+            "Phở bò", 
+            "Bún bò", 
+            "Cơm gà", 
+            "Bún trộn",
+            "Mỳ cay",
+            "Nem nướng",
+            "Bánh giò + Tào phớ", // Đã thêm dấu phẩy ở đây
+            "Bún đậu mắm tôm",
+            "Cơm MaiLuot",
+            "Bánh mỳ",
+            "Bún chả",
+            "Bánh cuốn",
+		"Bún thịt chó".// Phần tử cuối cùng có hay không có dấu phẩy đều được
+        ];
+        let clickCount = 0; 
+        let lastIndex = -1; // Bộ nhớ lưu vị trí của món ăn vừa được gọi
+
+        const foodDisplay = document.getElementById('food-display');
+        const button = document.getElementById('random-btn');
+
+        button.addEventListener('click', function() {
+            clickCount++;
+
+            if (clickCount <= 3) {
+                // Random ngẫu nhiên một số
+                let randomIndex = Math.floor(Math.random() * menu.length);
+                
+                // Vòng lặp chống trùng lặp: Nếu số vừa bốc trùng với số cũ thì bắt bốc lại
+                while (randomIndex === lastIndex) {
+                    randomIndex = Math.floor(Math.random() * menu.length);
+                }
+                
+                // Lưu lại số vừa bốc thành số cũ cho lần kiểm tra tiếp theo
+                lastIndex = randomIndex;
+                
+                // Hiển thị món ăn
+                foodDisplay.innerText = menu[randomIndex];
+                
+                if (clickCount === 1) {
+                    button.innerText = "Không thích? Đổi món khác";
+                } else if (clickCount === 2) {
+                    button.innerText = "Hơi kén cá chọn canh rồi đấy, bấm phát nữa xem?";
+                    button.style.backgroundColor = "#ff9800";
+                } else if (clickCount === 3) {
+                    button.innerText = "Cảnh báo chót: Đừng chọc mù mắt tôi!";
+                    button.style.backgroundColor = "darkred";
+                }
+            } else {
+                document.body.classList.add('angry');
+                foodDisplay.innerText = "ĂN BUỒI TAO NÀY, HỎI NHIỀU QUÁ!!!";
+            }
+        });
+    </script>
+</body>
+</html>
