@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiên Tri Đồ Ăn</title>
     <style>
-        /* CẤU TRÚC CSS CƠ BẢN */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -17,7 +16,7 @@
             background-color: #f0f8ff;
             transition: background-color 0.3s;
             text-align: center;
-            overflow: hidden; /* Chống cuộn chuột khi jumpscare hiện ra */
+            overflow: hidden;
         }
         #food-display {
             font-size: 2.5rem;
@@ -37,26 +36,25 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: 0.2s;
             position: relative;
-            z-index: 1; /* Đảm bảo nút nằm trên nền */
+            z-index: 1;
         }
         button:hover {
             background-color: #45a049;
         }
 
-        /* --- PHẦN KÍCH HOẠT JUMPSCARE (SẼ HIỆN RA KHI WEB "NỔI CÁU") --- */
         #scare-container {
-            display: none; /* Mặc định bị ẩn đi */
-            position: fixed; /* Phủ kín toàn bộ màn hình */
+            display: none;
+            position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background-color: black; /* Nền đen tịt dramatic */
-            z-index: 999; /* Nằm trên cùng của tất cả mọi thứ */
+            background-color: black;
+            z-index: 999;
             justify-content: center; align-items: center;
             flex-direction: column;
         }
         #scare-image {
-            max-width: 90%; /* Ảnh to nhưng không bị tràn màn hình */
+            max-width: 90%;
             max-height: 70vh;
-            border: 5px solid yellow; /* Thêm cái viền cho máu chiến */
+            border: 5px solid yellow;
             object-fit: contain;
         }
         #scare-text {
@@ -65,20 +63,17 @@
             text-transform: uppercase;
             font-weight: bold;
             margin-top: 20px;
-            text-shadow: 2px 2px 4px red; /* Thêm hiệu ứng bóng đỏ cho ghê */
+            text-shadow: 2px 2px 4px red;
         }
 
-        /* Khi body có class 'angry', các thành phần cũ sẽ bị ẩn đi */
         body.angry h1, body.angry #food-display, body.angry button {
             display: none !important;
         }
-        /* Và container jumpscare sẽ hiện ra */
         body.angry #scare-container {
             display: flex;
-            animation: zoomIn 0.1s ease-in; /* Hiệu ứng ảnh bật ra bất ngờ */
+            animation: zoomIn 0.1s ease-in;
         }
 
-        /* Hiệu ứng ảnh phóng to bất thình lình */
         @keyframes zoomIn {
             from { transform: scale(0.5); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
@@ -92,12 +87,12 @@
     <button id="random-btn">Hôm nay ăn gì?</button>
 
     <div id="scare-container">
-        <img id="scare-image" src="" alt="JUMPSCARE">
-        <div id="scare-text">NẤU MỲ TÔM MÀ ĂN ĐI, HỎI NHIỀU QUÁ!!!</div>
+        <img id="scare-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/400px-Cat03.jpg" alt="JUMPSCARE">
+        
+        <div id="scare-text">HẾT LƯỢT ĐỔI RỒI!</div>
     </div>
 
     <script>
-        // Menu đồ ăn xịn xò của bạn (đã thêm dấu phẩy đầy đủ)
         const menu = [
             "Cơm rang dưa bò",
             "Phở bò", 
@@ -119,7 +114,6 @@
 
         const foodDisplay = document.getElementById('food-display');
         const button = document.getElementById('random-btn');
-        const scareImage = document.getElementById('scare-image');
 
         button.addEventListener('click', function() {
             clickCount++;
@@ -142,12 +136,7 @@
                     button.style.backgroundColor = "darkred";
                 }
             } else {
-                // --- KÍCH HOẠT CHẾ ĐỘ JUMPSCARE KHI BẤM ĐẾN LẦN THỨ 4 ---
-                document.body.classList.add('angry'); // Gọi CSS để phủ màn hình đen
-                
-                // BẠN CẦN PASTE ĐƯỜNG LINK ẢNH MẶC NGƯỜI NỔI TIẾNG VÀO GIỮA DẤU NHÁY ĐƠN Ở DÒNG DƯỚI
-                // Ví dụ: scareImage.src = 'mixi.jpg';
-                scareImage.src = ''; 
+                document.body.classList.add('angry');
             }
         });
     </script>
