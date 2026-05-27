@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiên Tri Đồ Ăn Cho 303</title>
+
+    <meta property="og:title" content="Tiên Tri Đồ Ăn Cho Phòng 303">
+    <meta property="og:description" content="Không biết ăn gì? Nhấn vào đây để vũ trụ trả lời!">
+    <meta property="og:image" content="https://img.freepik.com/premium-vector/cute-bowl-pho-noodle-soup-cartoon-vector-icon-illustration-food-object-icon-isolated-flat_138676-11333.jpg">
+
     <style>
         body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f0f8ff; transition: background-color 0.3s; text-align: center; overflow: hidden; }
         #food-display { font-size: 2.5rem; font-weight: bold; margin: 20px; color: #333; min-height: 50px; }
         button { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: 0.2s; position: relative; z-index: 1; }
         button:hover { background-color: #45a049; }
         #scare-container { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: black; z-index: 999; justify-content: center; align-items: center; flex-direction: column; }
-        #scare-image {
-            max-width: 90%; /* Ảnh to nhưng không bị tràn màn hình */
-            max-height: 70vh;
-            border: 5px solid yellow; /* Thêm cái viền cho máu chiến */
-            object-fit: contain;
-        }
+        
+        /* Đã chỉnh lại kích thước để ảnh hiện to chà bá chiếm màn hình */
+        #scare-image { width: 80%; height: 60vh; border: 5px solid yellow; object-fit: contain; }
+        
         #scare-text { color: yellow; font-size: 4rem; text-transform: uppercase; font-weight: bold; margin-top: 20px; text-shadow: 2px 2px 4px red; }
         body.angry h1, body.angry #food-display, body.angry button { display: none !important; }
         body.angry #scare-container { display: flex; animation: zoomIn 0.1s ease-in; }
