@@ -17,7 +17,12 @@
         #scare-container { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: black; z-index: 999; justify-content: center; align-items: center; flex-direction: column; }
         
         /* Đã chỉnh lại kích thước để ảnh hiện to chà bá chiếm màn hình */
-        #scare-image { width: 80%; height: 60vh; border: 5px solid yellow; object-fit: contain; }
+        #scare-image { 
+            max-width: 95vw; 
+            max-height: 75vh; 
+            border: 8px solid yellow; 
+            animation: shake 0.1s infinite; 
+        }
         
         #scare-text { color: yellow; font-size: 4rem; text-transform: uppercase; font-weight: bold; margin-top: 20px; text-shadow: 2px 2px 4px red; }
         body.angry h1, body.angry #food-display, body.angry button { display: none !important; }
