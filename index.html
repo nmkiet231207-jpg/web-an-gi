@@ -10,7 +10,12 @@
         button { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: 0.2s; position: relative; z-index: 1; }
         button:hover { background-color: #45a049; }
         #scare-container { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: black; z-index: 999; justify-content: center; align-items: center; flex-direction: column; }
-        #scare-image { max-width: 90%; max-height: 70vh; border: 5px solid yellow; object-fit: contain; }
+        #scare-image {
+            max-width: 90%; /* Ảnh to nhưng không bị tràn màn hình */
+            max-height: 70vh;
+            border: 5px solid yellow; /* Thêm cái viền cho máu chiến */
+            object-fit: contain;
+        }
         #scare-text { color: yellow; font-size: 4rem; text-transform: uppercase; font-weight: bold; margin-top: 20px; text-shadow: 2px 2px 4px red; }
         body.angry h1, body.angry #food-display, body.angry button { display: none !important; }
         body.angry #scare-container { display: flex; animation: zoomIn 0.1s ease-in; }
