@@ -5,79 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiên Tri Đồ Ăn</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f8ff;
-            transition: background-color 0.3s;
-            text-align: center;
-            overflow: hidden;
-        }
-        #food-display {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 20px;
-            color: #333;
-            min-height: 50px;
-        }
-        button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            transition: 0.2s;
-            position: relative;
-            z-index: 1;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-
-        #scare-container {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-color: black;
-            z-index: 999;
-            justify-content: center; align-items: center;
-            flex-direction: column;
-        }
-        #scare-image {
-            max-width: 90%;
-            max-height: 70vh;
-            border: 5px solid yellow;
-            object-fit: contain;
-        }
-        #scare-text {
-            color: yellow;
-            font-size: 4rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-top: 20px;
-            text-shadow: 2px 2px 4px red;
-        }
-
-        body.angry h1, body.angry #food-display, body.angry button {
-            display: none !important;
-        }
-        body.angry #scare-container {
-            display: flex;
-            animation: zoomIn 0.1s ease-in;
-        }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.5); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
+        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f0f8ff; transition: background-color 0.3s; text-align: center; overflow: hidden; }
+        #food-display { font-size: 2.5rem; font-weight: bold; margin: 20px; color: #333; min-height: 50px; }
+        button { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: 0.2s; position: relative; z-index: 1; }
+        button:hover { background-color: #45a049; }
+        #scare-container { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: black; z-index: 999; justify-content: center; align-items: center; flex-direction: column; }
+        #scare-image { max-width: 90%; max-height: 70vh; border: 5px solid yellow; object-fit: contain; }
+        #scare-text { color: yellow; font-size: 4rem; text-transform: uppercase; font-weight: bold; margin-top: 20px; text-shadow: 2px 2px 4px red; }
+        body.angry h1, body.angry #food-display, body.angry button { display: none !important; }
+        body.angry #scare-container { display: flex; animation: zoomIn 0.1s ease-in; }
+        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
@@ -88,30 +25,18 @@
 
     <div id="scare-container">
         <img id="scare-image" src="https://media.tenor.com/2s4P0XQZtUQAAAAC/dog-stare.gif" alt="JUMPSCARE">
-        
         <div id="scare-text">HẾT LƯỢT ĐỔI RỒI!</div>
     </div>
 
     <script>
         const menu = [
-            "Cơm rang dưa bò",
-            "Phở bò", 
-            "Bún bò", 
-            "Cơm gà", 
-            "Bún trộn",
-            "Mỳ cay",
-            "Nem nướng",
-            "Bánh giò + Tào phớ", 
-            "Bún đậu mắm tôm",
-            "Cơm MaiLuot",
-            "Bánh mỳ",
-            "Bún chả",
-            "Bánh cuốn"
+            "Cơm rang dưa bò", "Phở bò", "Bún bò", "Cơm gà", "Bún trộn", 
+            "Mỳ cay", "Nem nướng", "Bánh giò + Tào phớ", "Bún đậu mắm tôm", 
+            "Cơm MaiLuot", "Bánh mỳ", "Bún chả", "Bánh cuốn"
         ];
 
         let clickCount = 0; 
         let lastIndex = -1; 
-
         const foodDisplay = document.getElementById('food-display');
         const button = document.getElementById('random-btn');
 
@@ -136,6 +61,7 @@
                     button.style.backgroundColor = "darkred";
                 }
             } else {
+                // Chỉ đổi màu nền đen, KHÔNG can thiệp vào link ảnh nữa!
                 document.body.classList.add('angry');
             }
         });
